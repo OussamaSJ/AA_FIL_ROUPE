@@ -1,12 +1,11 @@
 package fr.epsi.test;
 
+import static org.hamcrest.Matchers.hasItem;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.IsNot.not;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
-import org.junit.Assert;
 import org.junit.Test;
-
 import fr.epsi.restaurant.Client;
 import fr.epsi.restaurant.Restaurant;
 import fr.epsi.restaurant.Table;
@@ -31,9 +30,8 @@ public class TestInstallationClient {
 		Client client = new Client();
 		/* QUAND un client est affecté à une table */
 		table.affecter(client);
-		
 		/* ALORS cette table n'est plus disponible dans la liste des tables disponible du restaurant */
-		//Assert.assertThat(table, Arrays.asList(restaurant.tablesDisponible().contains(table)));
+		assertThat(restaurant.tablesDisponible(), not(hasItem(table)));
 		
 	}
 	
